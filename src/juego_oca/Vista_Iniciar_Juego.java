@@ -21,8 +21,8 @@ import javax.swing.JPanel;
 public class Vista_Iniciar_Juego extends JFrame {
    private final String TITULO_STRING="JUEGO DE LA OCA";
    private final String MODO_JUEGO="Elija modo de juego";
-   private final String MODO_JUEGO_1="1 Jugador";
-   private final String MODO_JUEGO_2="2 Jugadores";
+   static final String MODO_JUEGO_1="1 Jugador";
+   static final String MODO_JUEGO_2="2 Jugadores";
    private final String boto_Iniciar_Partida_String="Iniciar partida";
    private JLabel labelTitulo;
   
@@ -30,6 +30,8 @@ public class Vista_Iniciar_Juego extends JFrame {
    private JComboBox<String> combo_ModoJuego;
    
    private JButton iniciar_Partida_Boton;
+   
+   private Controlador_Vista_Iniciar_Juego controlador_Vista_Iniciar_Juego;
 
     public Vista_Iniciar_Juego() {
         configura_Ventana();
@@ -37,10 +39,12 @@ public class Vista_Iniciar_Juego extends JFrame {
     }
     
     private void configura_Ventana(){
+        controlador_Vista_Iniciar_Juego=new Controlador_Vista_Iniciar_Juego(this);
         this.setLayout(null);
         anadirPanelY_Label_Titulo();
         anadirPanel_JCombox();
         anadirJComboxY_Item();
+        anadirListeners();
         this.setSize(300,300);
     }
     
@@ -72,7 +76,14 @@ public class Vista_Iniciar_Juego extends JFrame {
     }
   
    
+    public String obtenerItem_ComboModoJuego(){
+        String itemString=combo_ModoJuego.getSelectedItem().toString();
+        return itemString;
+    }
    
+    private void anadirListeners(){
+        combo_ModoJuego.addActionListener(controlador_Vista_Iniciar_Juego);
+    }
    
     
 }
