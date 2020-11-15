@@ -23,7 +23,8 @@ public class Vista_Iniciar_Juego extends JFrame {
    private final String MODO_JUEGO="Elija modo de juego";
    static final String MODO_JUEGO_1="1 Jugador";
    static final String MODO_JUEGO_2="2 Jugadores";
-   private final String boto_Iniciar_Partida_String="Iniciar partida";
+   static final String INICIAR_PARTIDA_STRING_BOTON="Iniciar partida";
+   
    private JLabel labelTitulo;
   
    private JPanel JComboxPanel;
@@ -44,6 +45,7 @@ public class Vista_Iniciar_Juego extends JFrame {
         anadirPanelY_Label_Titulo();
         anadirPanel_JCombox();
         anadirJComboxY_Item();
+        anadirJPanelYJBotoIniciar();
         anadirListeners();
         this.setSize(300,300);
     }
@@ -74,6 +76,16 @@ public class Vista_Iniciar_Juego extends JFrame {
        JComboxPanel.add(combo_ModoJuego, BorderLayout.CENTER);
        
     }
+    
+      private void anadirJPanelYJBotoIniciar(){
+       JPanel panel_Boton_Iniciar=new JPanel();
+       panel_Boton_Iniciar.setBounds(50, 220, 150, 260);
+       iniciar_Partida_Boton=new JButton(INICIAR_PARTIDA_STRING_BOTON);
+       iniciar_Partida_Boton.setActionCommand(INICIAR_PARTIDA_STRING_BOTON);
+       panel_Boton_Iniciar.add(iniciar_Partida_Boton);
+       this.add(panel_Boton_Iniciar);
+       
+    }
   
    
     public String obtenerItem_ComboModoJuego(){
@@ -83,6 +95,7 @@ public class Vista_Iniciar_Juego extends JFrame {
    
     private void anadirListeners(){
         combo_ModoJuego.addActionListener(controlador_Vista_Iniciar_Juego);
+        iniciar_Partida_Boton.addActionListener(controlador_Vista_Iniciar_Juego);
     }
    
     
